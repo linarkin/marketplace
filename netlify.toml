@@ -1,0 +1,10 @@
+[[redirects]]
+  from = "/marketplace/blocks"
+  to = "https://api.up42.com/marketplace/blocks"
+  status = 200
+	force = true
+  headers = {X-From = "Netlify"}
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "*"

@@ -1,13 +1,14 @@
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import create from "zustand";
+import { ProductItemProp } from "types/product";
 
 const baseURL = "/";
 
 interface store {
-  products: any;
+  products: ProductItemProp[];
   loadingProducts: boolean;
   errorLoadingProducts: boolean;
-  getProducts: () => any;
+  getProducts: () => void;
   reset: () => void;
 }
 
@@ -17,7 +18,7 @@ const initialState = {
   errorLoadingProducts: false,
 };
 
-const useProductsStore = create<store>((set, get, state) => ({
+const useProductsStore = create<store>((set, get) => ({
   ...initialState,
 
   getProducts: () => {
@@ -27,9 +28,9 @@ const useProductsStore = create<store>((set, get, state) => ({
       });
       axios
         .get(`${baseURL}marketplace/blocks`)
-        .then((resp: any) => {
+        .then((resp: AxiosResponse) => {
           const filteredData = resp?.data?.data?.filter(
-            (product: any) =>
+            (product: ProductItemProp) =>
               product?.metadata?.blockPricingStrategy?.name === "simple"
           );
           filteredData &&
@@ -41,7 +42,7 @@ const useProductsStore = create<store>((set, get, state) => ({
             loadingProducts: false,
           });
         })
-        .catch((error: Error) => {
+        .catch(() => {
           set({
             loadingProducts: false,
             errorLoadingProducts: true,

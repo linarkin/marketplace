@@ -3,10 +3,10 @@ import { persist } from "zustand/middleware";
 import { ProductItemProp } from "types/product";
 
 interface store {
-  cart: any;
+  cart: ProductItemProp[];
   cartCount: number;
-  addItemToCart: (item: any) => void;
-  removeFromCart: (item: any, removeItem?: boolean) => void;
+  addItemToCart: (item: ProductItemProp) => void;
+  removeFromCart: (id: string, removeItem?: boolean) => void;
   emptyCart: () => void;
   reset: () => void;
 }
@@ -58,10 +58,10 @@ const useCartStore = create(
           };
         });
       },
-      removeFromCart: (id: number, removeItem?: boolean) =>
+      removeFromCart: (id: string, removeItem?: boolean) =>
         set((state) => {
           const updatedCart = state.cart
-            .map((productItem: any) =>
+            .map((productItem: ProductItemProp) =>
               productItem.id === id
                 ? {
                     ...productItem,
@@ -71,7 +71,7 @@ const useCartStore = create(
                   }
                 : productItem
             )
-            .filter((productItem: any) => productItem.quantity);
+            .filter((productItem: ProductItemProp) => productItem.quantity);
 
           const updatedCartCount = updatedCart.reduce(
             (sum: number, currentValue: ProductItemProp) => {

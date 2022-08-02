@@ -21,7 +21,7 @@ const HomePage: React.FC = () => {
 
   useEffect(() => {
     getProducts();
-  }, [products, getProducts]);
+  }, []);
 
   const addToCart = (item: ProductItemProp) => {
     addItemToCart(item);
@@ -47,13 +47,10 @@ const HomePage: React.FC = () => {
                     id={item.id}
                     name={item.displayName}
                     credits={
-                      item.metadata?.blockPricingStrategy?.credits
-                        ? item.metadata.blockPricingStrategy.credits
-                        : 0
+                      item.metadata?.blockPricingStrategy?.credits ?? 0
                     }
                     imageUrl={
-                      item.metadata?.blockThumbnailUrl &&
-                      item.metadata.blockThumbnailUrl
+                      item.metadata?.blockThumbnailUrl
                     }
                     buttonClicked={() => addToCart(item)}
                   />

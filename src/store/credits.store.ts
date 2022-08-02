@@ -3,7 +3,7 @@ import { persist } from "zustand/middleware";
 
 interface store {
   credits: number;
-  removeCredits: (totalPrice: number) => any;
+  removeCredits: (totalPrice: number) => void;
   reset: () => void;
 }
 
@@ -13,7 +13,7 @@ const initialState = {
 
 const useCreditsStore = create(
   persist<store>(
-    (set, get, state) => ({
+    (set) => ({
       ...initialState,
       removeCredits: (totalPrice: number) => {
         set((state) => {

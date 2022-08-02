@@ -46,9 +46,9 @@ const CartSideBar: React.FC<CartSidebarProps> = ({
 
   useEffect(() => {
     const total = cart.reduce((sum: number, currentValue: ProductItemProp) => {
-      return (sum +=
-        cart.find((cartItem: ProductItemProp) => cartItem.id === currentValue.id).metadata
-          ?.blockPricingStrategy?.credits * currentValue.quantity);
+        const currentItem = cart.find((cartItem: ProductItemProp) => cartItem.id === currentValue.id);
+        const coutCredits = currentItem?.metadata?.blockPricingStrategy?.credits ? currentItem?.metadata?.blockPricingStrategy?.credits * currentValue.quantity : 0;
+        return sum+= coutCredits;
     }, 0);
     setTotalPrice(total);
   }, [cart]);
@@ -66,9 +66,7 @@ const CartSideBar: React.FC<CartSidebarProps> = ({
                 id={item.id}
                 name={item.name}
                 credits={
-                  item.metadata?.blockPricingStrategy?.credits
-                    ? item.metadata?.blockPricingStrategy?.credits
-                    : 0
+                  item.metadata?.blockPricingStrategy?.credits ?? 0
                 }
                 quantity={item.quantity}
                 removeItem={(id) => removeFromCart(id, true)}

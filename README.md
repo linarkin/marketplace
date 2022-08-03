@@ -3,7 +3,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Link - https://endearing-melba-372449.netlify.app/
+Link to the hosted application - https://endearing-melba-372449.netlify.app/
 
 <b>Tech stack, libraries</b>: React, Typescript, styled-components, Zustand for the state management, react-testing-library, cypress for testing. MUI for components.
 <br />

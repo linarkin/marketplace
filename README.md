@@ -10,7 +10,7 @@ Link - https://endearing-melba-372449.netlify.app/
 
 ## Conscious decisions
 
-Due to a shortage of time, I had to omit some parts and details of the application. 
+Due to a shortage of time, I had to omit some parts and details of the application: 
 - <b>Tests.</b> The most important part would be covering the project with tests. I only added the example test for `ProductCard`. And just set up the cypress library without adding any tests.
 - <b>Styles.</b> 1) There was an idea to make all styles more flexible by using `rem`. That would make it easier to change the website for accessibility for example. <br />2) Normally, I would use more variables. <br /> 3) Consistency of the app and  MUI (difference in fonts). Small CSS issues.
 - <b>In general.</b> Self-review the code. Clean up the code, Better error handling. (Show the error message from the server, etc.). 

@@ -18,7 +18,7 @@ Due to a shortage of time, I had to omit some parts and details of the applicati
 
 ## Thoughts:
 
-Thank you very much for the interesting coding challenge. The task is very practical and has a good detailed description. It was easy to go through the acceptance criteria.
+Thank you very much for the interesting coding challenge. The task is very practical and has a good detailed description. It was easy to go through the acceptance criteria. I hope you like my solution :)
 <br /><br />
 
 ## Available Scripts
